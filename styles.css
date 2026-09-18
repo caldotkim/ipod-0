@@ -1,3 +1,9 @@
+:root {
+  --ipod-body: #d9c898;
+  --ipod-bezel: #ffffff;
+  --page-bg: #ededed;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,7 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ededed;
+  background: var(--page-bg);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
@@ -27,7 +33,14 @@ iframe {
   width: min(240px, calc(100vw - 32px));
   padding: 14px 10px 10px;
   border-radius: 9px;
-  background: linear-gradient(90deg, #c9b483 0%, #e9dcb9 12%, #f3e9cc 50%, #e9dcb9 88%, #c9b483 100%);
+  background: linear-gradient(
+    90deg,
+    oklch(from var(--ipod-body) calc(l - 0.062) c h) 0%,
+    oklch(from var(--ipod-body) calc(l + 0.06) c h) 12%,
+    oklch(from var(--ipod-body) calc(l + 0.099) c h) 50%,
+    oklch(from var(--ipod-body) calc(l + 0.06) c h) 88%,
+    oklch(from var(--ipod-body) calc(l - 0.062) c h) 100%
+  );
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 18px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -39,7 +52,12 @@ iframe {
   width: 3px;
   height: 48px;
   border-radius: 2px 0 0 2px;
-  background: linear-gradient(to bottom, #d9c898 0 30%, #b9a670 30% 70%, #d9c898 70%);
+  background: linear-gradient(
+    to bottom,
+    var(--ipod-body) 0 30%,
+    oklch(from var(--ipod-body) calc(l - 0.107) c h) 30% 70%,
+    var(--ipod-body) 70%
+  );
 }
 
 .ipod::after {
@@ -50,7 +68,7 @@ iframe {
   width: 27px;
   height: 3px;
   border-radius: 2px 2px 0 0;
-  background: #d9c898;
+  background: var(--ipod-body);
 }
 
 .face {
@@ -61,7 +79,7 @@ iframe {
   gap: 12px;
   padding: 14px 10px 12px;
   border-radius: 7px;
-  background: #ffffff;
+  background: var(--ipod-bezel);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
@@ -73,7 +91,7 @@ iframe {
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  background: #b9a670;
+  background: oklch(from var(--ipod-body) calc(l - 0.107) c h);
 }
 
 .screen {
